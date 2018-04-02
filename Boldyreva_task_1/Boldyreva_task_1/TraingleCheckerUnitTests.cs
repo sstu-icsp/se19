@@ -52,36 +52,44 @@ namespace Boldyreva_task_1
         [ExpectedException(typeof(Exception), "Must by exception for negative length")]
         public void NegativeLengthLenTest()
         {
-            double result = Instance.checkBySides(2, 0, -10);
+            double result = Instance.checkBySides(2, -5, -10);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Must by exception for zero length")]
+        public void ZeroLengthLenTest1()
+        {
+            double result = Instance.checkBySides(2, 0, 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Must by exception for zero length")]
+        public void ZeroLengthLenTest2()
+        {
+            double result = Instance.checkBySides(0, 0, 0);
         }
 
        // Tests for coordinats
         [TestMethod]
         public void CorrectAllSidesEqualCoordTest()
         {
-            double result = Instance.checkByCoord(0, 0, 1, 0, 1.2, (Math.Pow(3, 0.5))/2);
+            double a = (6 * Math.Sqrt(3)) / 2;
+            double result = Instance.checkByCoord(0, 0, 6, 0, 3, a);
             Assert.AreEqual(1, result, "Must be all-sides-equal triange;");
         }
 
         [TestMethod]
         public void CorrectTwoSidesEqualCoordTest()
         {
-            double result = Instance.checkByCoord(0, 0, 0, 2, 2, 0);
+            double result = Instance.checkByCoord(0, 0, 4, 0, 2, 5);
             Assert.AreEqual(2, result, "Must be 2-sides-equal triangle");
         }
 
         [TestMethod]
         public void CorrectSquareAngleCoordTest()
         {
-            double result = Instance.checkByCoord(0, 3, 3, 0, 0, 0);
+            double result = Instance.checkByCoord(0, 3, 4, 0, 0, 0);
             Assert.AreEqual(3, result, "Must be square angle triangle");
-        }
-
-        [TestMethod]
-        public void CorrectOutOfBornTriangleCoordTest()
-        {
-            double result = Instance.checkByCoord(2, 2, 3, 2, 2, 2);
-            Assert.AreEqual(4, result, "Must be out-of-born triangle");
         }
 
         ///////

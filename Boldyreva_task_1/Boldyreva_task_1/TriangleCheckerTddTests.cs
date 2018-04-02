@@ -21,6 +21,27 @@ namespace Boldyreva_task_1
 
         //Tests for sides
         [TestMethod]
+        [ExpectedException(typeof(Exception), "Must by exception for zero length")]
+        public void tddZeroLengthLenTest1()
+        {
+            double result = Instance.checkBySides(0, 0, 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Must by exception for zero length")]
+        public void tddZeroLengthLenTest2()
+        {
+            double result = Instance.checkBySides(0, -10, 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Must by exception for negative length")]
+        public void tddNegativeLengthLenTest()
+        {
+            double result = Instance.checkBySides(2, 5, -10);
+        }
+
+        [TestMethod]
         public void tddCorrectAllSidesEqualLenTest()
         {
             double result = Instance.checkBySides(2, 2, 2);
@@ -55,32 +76,20 @@ namespace Boldyreva_task_1
             Assert.AreEqual(4, result, "Must be out-of-born triangle");
         }
 
-        [TestMethod]
-        public void tddCorrectOutOfBornTriangleLenTest3()
-        {
-            double result = Instance.checkBySides(1, 1, 0);
-            Assert.AreEqual(4, result, "Must be out-of-born triangle");
-        }
-
-        [TestMethod]
-        public void tddCorrectOutOfBornTriangleLenTest4()
-        {
-            double result = Instance.checkBySides(0, 0, 0);
-            Assert.AreEqual(4, result, "Must be out-of-born triangle");
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(Exception), "Must by exception for negative length")]
-        public void tddNegativeLengthLenTest()
-        {
-            double result = Instance.checkBySides(2, 0, -10);
-        }
-
         // Tests for coordinats
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Must by exception for zero length")]
+        public void tddZeroLengthCoordTest()
+        {
+            double result = Instance.checkByCoord(0, 0, 0, 0, 4, 0);
+        }//2 dots have the same coords
+        
+        
         [TestMethod]
         public void tddCorrectAllSidesEqualCoordTest()
         {
-            double result = Instance.checkByCoord(0, 0, 0, 4, 4, 0);
+            double a = (4*Math.Sqrt(3))/2;
+            double result = Instance.checkByCoord(0, 0, 4, 0, 2, a);
             Assert.AreEqual(1, result, "Must be all-sides-equal triange;");
         }
 
@@ -94,17 +103,19 @@ namespace Boldyreva_task_1
         [TestMethod]
         public void tddCorrectSquareAngleCoordTest()
         {
-            double result = Instance.checkByCoord(0, 3, 3, 0, 0, 0);
+            double result = Instance.checkByCoord(0, 0, 3, 0, 0, 4);
             Assert.AreEqual(3, result, "Must be square angle triangle");
         }
 
         [TestMethod]
-        public void tddCorrectOutOfBornTriangleCoordTest()
+        public void tddCorrectUnknownAngleCoordTest()
         {
-            double result = Instance.checkByCoord(2, 2, 3, 2, 2, 2);
-            Assert.AreEqual(4, result, "Must be out-of-born triangle");
+            double result = Instance.checkByCoord(0, 0, 5, 0, 6, 3);
+            Assert.AreEqual(5, result, "Must be unknowne triangle");
         }
+        //Test for out-of-born triangle useless because one of its sides will equal zero!!
 
+        
         ///////
     }
 }
