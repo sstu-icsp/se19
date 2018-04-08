@@ -1,0 +1,6 @@
+C:\Users\Надежда\Desktop\Task1_IntRange\Task1_IntRange\bin\Debug\Task1_IntRange.exe.config
+C:\Users\Надежда\Desktop\Task1_IntRange\Task1_IntRange\bin\Debug\Task1_IntRange.exe
+C:\Users\Надежда\Desktop\Task1_IntRange\Task1_IntRange\bin\Debug\Task1_IntRange.pdb
+C:\Users\Надежда\Desktop\Task1_IntRange\Task1_IntRange\obj\Debug\Task1_IntRange.exe
+C:\Users\Надежда\Desktop\Task1_IntRange\Task1_IntRange\obj\Debug\Task1_IntRange.pdb
+C:\Users\Надежда\Desktop\Task1_IntRange\Task1_IntRange\obj\Debug\Task1_IntRange.csprojResolveAssemblyReference.cache
