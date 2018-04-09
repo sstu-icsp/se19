@@ -247,6 +247,43 @@ namespace TDDUnitTests
             ir = new IntRangeOpened(0.99f, 3.01f);
             Assert.AreEqual(3, ir.Length());
         }
+
+        [TestMethod]
+        public void TestClosedFloatIntersectsLimit()
+        {
+            IntRange ir = new IntRangeClosed(1f, 2.99f); 
+            IntRange ir2 = new IntRangeClosed(3.01f, 4f);
+            Assert.AreEqual(false, ir.Intersects(ir2));
+            ir2 = new IntRangeClosed(3.0f, 4f);
+            Assert.AreEqual(false, ir.Intersects(ir2));
+            ir2 = new IntRangeClosed(2.99f, 4f);
+            Assert.AreEqual(true, ir.Intersects(ir2));
+        }
+
+        [TestMethod]
+        public void TestClosedAndOpenedFloatIntersectsLimit()
+        {
+            IntRange ir = new IntRangeClosed(1f, 2.99f);
+            IntRange ir2 = new IntRangeOpened(3.01f, 4f);
+            Assert.AreEqual(false, ir.Intersects(ir2));
+            ir2 = new IntRangeOpened(2.99f, 4f);
+            Assert.AreEqual(false, ir.Intersects(ir2));
+            ir2 = new IntRangeOpened(2.98f, 4f);
+            Assert.AreEqual(true, ir.Intersects(ir2));
+        }
+
+        [TestMethod]
+        public void TestOpenedFloatIntersectsLimit()
+        {
+            IntRange ir = new IntRangeOpened(1f, 2.99f);
+            IntRange ir2 = new IntRangeOpened(3.01f, 4f);
+            Assert.AreEqual(false, ir.Intersects(ir2));
+            ir2 = new IntRangeOpened(2.99f, 4f);
+            Assert.AreEqual(false, ir.Intersects(ir2));
+            ir2 = new IntRangeOpened(2.98f, 4f);
+            Assert.AreEqual(true, ir.Intersects(ir2));
+        }
+
         #endregion
     }
 }

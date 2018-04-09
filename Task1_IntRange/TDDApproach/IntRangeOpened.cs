@@ -48,5 +48,11 @@ namespace Task1_IntRange.TDDApproach
                 return;
             }
         }
+
+        public override bool ContainsFloat(float v)
+        {
+            return (v <= Min || v >= Max) ? false : true;
+        }
+
     }
 }

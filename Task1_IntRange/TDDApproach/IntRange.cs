@@ -12,7 +12,6 @@ namespace Task1_IntRange.TDDApproach
 
         protected int[] values;
         protected int intMin, intMax;
-        protected float floatLength;
         protected BoundType boundType;
 
         public IntRange()
@@ -35,7 +34,6 @@ namespace Task1_IntRange.TDDApproach
             InitBounds(left, right);
             intMin = (int)Math.Ceiling(Min);
             intMax = (int)Math.Floor(Max);
-            floatLength = Max - Min;
             InitRange();
         }
 
@@ -64,17 +62,8 @@ namespace Task1_IntRange.TDDApproach
             return values.Length;
         }
 
-        public bool Contains(int v)
-        {
-            if (boundType == BoundType.Int)
-            {
-                return ContainsInt(v);
-            }
-            else if (boundType == BoundType.Float)
-            {
-                return ContainsFloat(v);
-            }
-            return false;
+        public bool Contains(int v) {
+            return ContainsFloat(v);
         }
 
         protected bool ContainsInt(int v)
@@ -83,23 +72,12 @@ namespace Task1_IntRange.TDDApproach
             return (index < 0 || index >= values.Length) ? false : true;
         }
 
-        protected bool ContainsFloat(float v)
-        {
-            float valueToLeftBound = v - Min;
-                return (valueToLeftBound < 0 || valueToLeftBound >= floatLength) ? false : true;
-        }
+        public abstract bool ContainsFloat(float v);
+        
 
         public bool Intersects(IntRange ir2)
         {
-            if (boundType == BoundType.Int)
-            {
-                return ir2.ContainsInt(intMin) || ir2.ContainsInt(intMax);
-            }
-            else if (boundType == BoundType.Float)
-            {
-                return ir2.ContainsFloat(Min) || ir2.ContainsFloat(Max);
-            }
-            return false;
+            return (ContainsFloat(ir2.Min) || ContainsFloat(ir2.Max)) && (ir2.ContainsFloat(Min) || ir2.ContainsFloat(Max));
         }
 
         protected enum BoundType { Int, Float };

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Task1_IntRange.TDDApproach
 {
@@ -37,6 +38,11 @@ namespace Task1_IntRange.TDDApproach
                 return;
             }
         }
- 
+
+        public override bool ContainsFloat(float v)
+        {
+            return (v < Min || v > Max) ? false : true;
+        }
+
     }
 }
