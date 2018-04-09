@@ -205,45 +205,49 @@ namespace TDDUnitTests
 
         //1.7. Поддерживаются дробные значения.
         #region Float
-        [TestMethod]
-        public void TestFloatIsEmptyTrue()
-        {
-            IntRange ir = new IntRangeClosed(0.1f, 0.5f);
-            Assert.AreEqual(true, ir.IsEmpty());
-            ir = new IntRangeOpened(0f, 1f);
-            Assert.AreEqual(true, ir.IsEmpty());
-        }
 
-        [TestMethod]
-        public void TestFloatIsEmptyFalse()
-        {
-            IntRange ir = new IntRangeClosed(0.1f, 1.1f);
-            Assert.AreEqual(false, ir.IsEmpty());
-            ir = new IntRangeOpened(-0.01f, 1.01f);
-            Assert.AreEqual(false, ir.IsEmpty());
-        }
-        [TestMethod]
-        public void TestFloatIsEmptyFalseAroundInt()
-        {
-            IntRange ir = new IntRangeOpened(0.99f, 1.01f);
-            Assert.AreEqual(false, ir.IsEmpty());
-            ir = new IntRangeClosed(0.99f, 1.01f);
-            Assert.AreEqual(false, ir.IsEmpty());
-        }
+        //IsEmpty uses Length == 0 => no need to check
         [TestMethod]
         public void TestFloatZeroLength()
         {
             IntRange ir = new IntRangeClosed(0.0003f, 0.003f);
+            Assert.AreEqual(0, ir.Length());
+            ir = new IntRangeClosed(0.5f, 0.5f);
+            Assert.AreEqual(0, ir.Length());
+            ir = new IntRangeOpened(0.0003f, 0.003f);
             Assert.AreEqual(0, ir.Length());
             ir = new IntRangeOpened(1.5f, 1.5f);
             Assert.AreEqual(0, ir.Length());
         }
         
         [TestMethod]
-        public void TestFloatLength()
+        public void TestClosedFloatLengthLimit()
         {
             IntRange ir = new IntRangeClosed(1.01f, 2.99f);
             Assert.AreEqual(1, ir.Length());
+            ir = new IntRangeClosed(1.0f, 2.99f);
+            Assert.AreEqual(2, ir.Length());
+            ir = new IntRangeClosed(1.01f, 3f);
+            Assert.AreEqual(2, ir.Length());
+            ir = new IntRangeClosed(1f, 3f);
+            Assert.AreEqual(3, ir.Length());
+            ir = new IntRangeClosed(0.99f, 3.01f);
+            Assert.AreEqual(3, ir.Length());
+        }
+
+        [TestMethod]
+        public void TestOpenedFloatLengthLimit()
+        {
+            IntRange ir = new IntRangeOpened(0.99f, 1.01f);
+            Assert.AreEqual(1, ir.Length());
+            ir = new IntRangeOpened(1.01f, 2.99f);
+            Assert.AreEqual(1, ir.Length());
+            ir = new IntRangeOpened(1.0f, 2.99f);
+            Assert.AreEqual(1, ir.Length());
+            ir = new IntRangeOpened(1.01f, 3f);
+            Assert.AreEqual(1, ir.Length());
+            ir = new IntRangeOpened(1f, 2f);
+            Assert.AreEqual(0, ir.Length());
             ir = new IntRangeOpened(0.99f, 3.01f);
             Assert.AreEqual(3, ir.Length());
         }
@@ -283,7 +287,7 @@ namespace TDDUnitTests
             ir2 = new IntRangeOpened(2.98f, 4f);
             Assert.AreEqual(true, ir.Intersects(ir2));
         }
-
         #endregion
+       
     }
 }

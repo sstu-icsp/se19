@@ -28,9 +28,8 @@ namespace Task1_IntRange.TDDApproach
             else if (boundType == BoundType.Float)
             {
                 List<int> _values = new List<int>();
-                if (Min - intMin == 0) intMin++;
                 int curr = intMin;
-                while (curr < Max)
+                while (curr <= Max)
                 {
                     _values.Add(curr++);
                 }
