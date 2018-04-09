@@ -48,5 +48,19 @@ namespace SalaryCalculator
             double result = scConst.SalaryCalculating(1, 100000, 1);
             Assert.AreEqual(-1, result);
         }
+
+        [TestMethod]
+        public void CorrectStandartSalary()
+        {
+            double result = scConst.SalaryCalculating(2, 2, 2);
+            Assert.AreEqual(8, result);
+        }
+
+        [TestMethod]
+        public void CorrectAverageSalary()
+        {
+            double result = scConst.SalaryCalculating(3, 2, 2);
+            Assert.AreEqual(24, result);
+        }
     }
 }

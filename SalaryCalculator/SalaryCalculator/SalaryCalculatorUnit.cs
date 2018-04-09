@@ -35,7 +35,7 @@ namespace SalaryCalculator
 
         public double AverageSalary(int level, double basicSalary, double baseRatio)
         {
-            double resultSalary = (basicSalary * Math.Pow(baseRatio, level)) + basicSalary * Math.Pow(baseRatio, level + 1) / 2;
+            double resultSalary = ((basicSalary * Math.Pow(baseRatio, level)) + basicSalary * Math.Pow(baseRatio, level + 1)) / 2;
             return resultSalary;
         }
 
