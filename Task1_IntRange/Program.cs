@@ -1,4 +1,5 @@
-﻿using Task1_IntRange.TDDApproach;
+﻿using System;
+using Task1_IntRange.UnitTestApproach;
 
 namespace Task1_IntRange
 {
@@ -6,9 +7,8 @@ namespace Task1_IntRange
     {
         static void Main(string[] args)
         {
-            IntRange ir = new IntRangeClosed(1f, 2.99f);
-            IntRange ir2 = new IntRangeOpened(2.99f, 4f);
-            ir.Intersects(ir2);
+            IntRange ir = new IntRange(0, 0, IntRange.IntervalType.OPENED);
+            ir.Length();
         }
     }
 }

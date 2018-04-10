@@ -20,7 +20,7 @@ namespace UnitTests
         public void Range0to1_Empty()
         {
             IntRange ir = new IntRange(0, 1, IntRange.IntervalType.OPENED);
-            Assert.AreEqual(true, ir.IsEmpty());
+            Assert.AreEqual(false, ir.IsEmpty());
         }
 
         [TestMethod]
@@ -96,16 +96,27 @@ namespace UnitTests
             Assert.AreEqual(true, ir.Contains(-7));
             Assert.AreEqual(true, ir.Contains(-1));
         }
+
+        [TestMethod]
+        public void Range_ContainsFloat()
+        {
+            IntRange ir = new IntRange(0.2f, 0.8f, IntRange.IntervalType.OPENED);
+            Assert.AreEqual(true, ir.ContainsFloat(0.5f));
+            Assert.AreEqual(false, ir.ContainsFloat(0.2f));
+            Assert.AreEqual(false, ir.ContainsFloat(0.8f));
+            Assert.AreEqual(false, ir.ContainsFloat(0.19f));
+            Assert.AreEqual(false, ir.ContainsFloat(0.81f));
+        }
         #endregion
 
         #region Intersects()
 
         [TestMethod]
-        public void RangeNegative_IntersectsLeftBoundNegative1()
+        public void RangeNegative_NotIntersectsLeftBoundNegative1()
         {
             IntRange ir1 = new IntRange(-20, 0, IntRange.IntervalType.OPENED);
             IntRange ir2 = new IntRange(-21, -20);
-            Assert.AreEqual(true, ir1.Intersects(ir2));
+            Assert.AreEqual(false, ir1.Intersects(ir2));
         }
 
         [TestMethod]

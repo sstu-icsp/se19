@@ -9,6 +9,12 @@ namespace UnitTests
     {
 
         #region IsEmpty()
+        [TestMethod]
+        public void Range_Float_Empty()
+        {
+            IntRange ir = new IntRange(0.6f, 0.6f);
+            Assert.AreEqual(true, ir.IsEmpty());
+        }
 
         [TestMethod]
         public void Range0to0_NotEmpty()
@@ -90,6 +96,17 @@ namespace UnitTests
             Assert.AreEqual(true, ir.Contains(-20));
             Assert.AreEqual(true, ir.Contains(-7));
             Assert.AreEqual(true, ir.Contains(0));
+        }
+
+        [TestMethod]
+        public void Range_ContainsFloat()
+        {
+            IntRange ir = new IntRange(0.2f, 0.8f);
+            Assert.AreEqual(true, ir.ContainsFloat(0.5f));
+            Assert.AreEqual(true, ir.ContainsFloat(0.2f));
+            Assert.AreEqual(true, ir.ContainsFloat(0.8f));
+            Assert.AreEqual(false, ir.ContainsFloat(0.19f));
+            Assert.AreEqual(false, ir.ContainsFloat(0.81f));
         }
         #endregion
 

@@ -8,15 +8,12 @@ namespace Task1_IntRange.UnitTestApproach
     /// </summary>
     public class IntRange
     {
-        public float X { get { return start; } private set { } }
-        public float Y { get { return end; } private set { } }
-        public IntervalType TypeOfInterval { get { return intervalType; } private set { } }
+        public float X { get; private set; }
+        public float Y { get; private set; }
+        public IntervalType TypeOfInterval { get; private set; }
 
-        private float start, end;
-        private int[] storedValues;
-        private IntervalType intervalType;
+        private int startInt, endInt; //first left and right ints at interval
 
-        #region Constructors
         /// <param name = "x" >Left boundary of the interval</param>
         /// <param name="y">Right boundary of the interval</param>
         /// <param name="type">CLOSED - includes boundaries, OPENED - excludes boundaries</param>
@@ -32,65 +29,74 @@ namespace Task1_IntRange.UnitTestApproach
         {
             Initialize(x, y, type);
         }
-        #endregion
 
         private void Initialize(float x, float y, IntervalType intervalType)
         {
             if (x <= y)
             {
-                start = x;
-                end = y;
+                X = x;
+                Y = y;
             }
             else
             {
-                start = y;
-                end = x;
+                X = y;
+                Y = x;
             }
-            this.intervalType = intervalType;
-            InitializeIntRangeArray();
-        }
-
-        private void InitializeIntRangeArray()
-        {
-            int currInt = (int)Math.Ceiling(start), lastInt = (int)Math.Floor(end);
-            if (intervalType == IntervalType.OPENED)
-            {
-                    currInt++;
-                    lastInt--;
-            }
-            int length = lastInt - currInt + 1;
-            if (length < 0) length = 0;
-            storedValues = new int[length];
-            for (int i = 0; currInt <= lastInt; i++)
-            {
-                storedValues[i] = currInt;
-                currInt++;
-            }
+            startInt = (int)Math.Ceiling(X);
+            endInt = (int)Math.Floor(Y);
+            TypeOfInterval = intervalType;
         }
 
         public bool IsEmpty()
         {
-            return storedValues.Length == 0;
+            if (startInt > endInt || (TypeOfInterval == IntervalType.OPENED && X == Y))
+                return true;
+            return false;
         }
 
         public int Length()
         {
-            return storedValues.Length;
+            int curr = startInt;
+            if (TypeOfInterval == IntervalType.CLOSED)
+            {
+                while (curr <= Y)
+                {
+                    curr++;
+                }
+            }
+            else if (TypeOfInterval == IntervalType.OPENED)
+            {
+                while (curr < Y)
+                {
+                    curr++;
+                }
+                if (X - startInt == 0 && X!=Y)
+                    return curr - startInt - 1;
+            }
+             
+            return curr - startInt;
         }
 
         public bool Contains(int number)
         {
-            if (IsEmpty())
-                return false;
-            return number >= storedValues[0] && number <= storedValues[storedValues.Length - 1];
+            return ContainsFloat(number);
+        }
+
+        public bool ContainsFloat(float number)
+        {
+            if (TypeOfInterval == IntervalType.CLOSED)
+                return number >= X && number <= Y;
+            else
+                return number > X && number < Y;
         }
 
         public bool Intersects(IntRange otherRange)
         {
             if (IsEmpty() || otherRange.IsEmpty())
                 return false;
-            return (start >= otherRange.start && start <= otherRange.end) ||
-                (end >= otherRange.start && end <= otherRange.end);
+            return (ContainsFloat(otherRange.X) || ContainsFloat(otherRange.Y)) 
+                && (otherRange.ContainsFloat(X) || otherRange.ContainsFloat(Y))
+                || (X == otherRange.X && Y == otherRange.Y);
         }
 
         public enum IntervalType { CLOSED, OPENED }
