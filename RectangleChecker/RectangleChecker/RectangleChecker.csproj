@@ -44,7 +44,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
+    <Compile Include="RectangleCheckerTdd.cs" />
     <Compile Include="RectangleCheckerUnit.cs" />
+    <Compile Include="RectangleTdd.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

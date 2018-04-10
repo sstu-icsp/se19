@@ -1,0 +1,7 @@
+C:\Users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleCheckerTddTests\bin\Debug\RectangleCheckerTddTests.dll
+C:\Users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleCheckerTddTests\bin\Debug\RectangleCheckerTddTests.pdb
+C:\Users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleCheckerTddTests\obj\Debug\RectangleCheckerTddTests.csprojResolveAssemblyReference.cache
+C:\Users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleCheckerTddTests\obj\Debug\RectangleCheckerTddTests.dll
+C:\Users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleCheckerTddTests\obj\Debug\RectangleCheckerTddTests.pdb
+C:\Users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleCheckerTddTests\bin\Debug\RectangleChecker.exe
+C:\Users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleCheckerTddTests\bin\Debug\RectangleChecker.pdb

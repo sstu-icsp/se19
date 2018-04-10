@@ -1,0 +1,6 @@
+c:\users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleChecker\bin\Debug\RectangleChecker.exe.config
+c:\users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleChecker\obj\Debug\RectangleChecker.csprojResolveAssemblyReference.cache
+c:\users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleChecker\bin\Debug\RectangleChecker.exe
+c:\users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleChecker\bin\Debug\RectangleChecker.pdb
+c:\users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleChecker\obj\Debug\RectangleChecker.exe
+c:\users\1\documents\visual studio 2012\Projects\RectangleChecker\RectangleChecker\obj\Debug\RectangleChecker.pdb

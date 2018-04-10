@@ -94,11 +94,13 @@ namespace RectangleCheckerUnitTests
             Assert.AreEqual(true, result2);
         }
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void Error_Add_Negative_Side()
         {
             RectangleCheckerUnit test = new RectangleCheckerUnit(-40, -40, 90);
         }
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void Error_Add_Wrong_Angle()
         {
             RectangleCheckerUnit test1 = new RectangleCheckerUnit(40, 40, -1);

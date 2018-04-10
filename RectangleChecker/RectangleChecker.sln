@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleChecker", "Rectang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleCheckerUnitTests", "RectangleCheckerUnitTests\RectangleCheckerUnitTests.csproj", "{1BA2C3FA-F3C7-4A8F-8B30-3F16E0EB1D2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleCheckerTddTests", "RectangleCheckerTddTests\RectangleCheckerTddTests.csproj", "{A1C7AF83-3281-4033-A6B3-DAE8D477573D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{1BA2C3FA-F3C7-4A8F-8B30-3F16E0EB1D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BA2C3FA-F3C7-4A8F-8B30-3F16E0EB1D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BA2C3FA-F3C7-4A8F-8B30-3F16E0EB1D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C7AF83-3281-4033-A6B3-DAE8D477573D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C7AF83-3281-4033-A6B3-DAE8D477573D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C7AF83-3281-4033-A6B3-DAE8D477573D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C7AF83-3281-4033-A6B3-DAE8D477573D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
